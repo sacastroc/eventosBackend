@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  assistants: 1
+  category: one
+  user: one
+  isPrivate: MyString
+  minAge: 1
+  place: MyString
+
+two:
+  name: MyString
+  assistants: 1
+  category: two
+  user: two
+  isPrivate: MyString
+  minAge: 1
+  place: MyString
