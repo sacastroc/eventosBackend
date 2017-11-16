@@ -4,23 +4,23 @@ class SessionsController < ApiController
 
   def create
     # Con LDAP
-    # if create_ldap()
-    #   if user = User.valid_login?(params[:email], params[:password])
-    #     allow_token_to_be_used_only_once_for(user)
-    #    send_auth_token_for_valid_login_of(user)
-    #   else
-    #     render_unauthorized("credenciales")
-    #   end
-    # else
-    #   render_unauthorized("LDAP")
-    # end
-    # Sin LDAP
-    if user = User.valid_login?(params[:email], params[:password])
-      allow_token_to_be_used_only_once_for(user)
-      send_auth_token_for_valid_login_of(user)
+    if create_ldap()
+      if user = User.valid_login?(params[:email], params[:password])
+        allow_token_to_be_used_only_once_for(user)
+       send_auth_token_for_valid_login_of(user)
+      else
+        render_unauthorized("credenciales")
+      end
     else
-      render_unauthorized("credenciales")
+      render_unauthorized("LDAP")
     end
+    # Sin LDAP
+    # if user = User.valid_login?(params[:email], params[:password])
+    #   allow_token_to_be_used_only_once_for(user)
+    #   send_auth_token_for_valid_login_of(user)
+    # else
+    #   render_unauthorized("credenciales")
+    # end
 
   end
 
@@ -38,11 +38,11 @@ class SessionsController < ApiController
   end
 
   def allow_token_to_be_used_only_once_for(user)
-    user.authentication.regenerate_token
+    # user.authentication.regenerate_token
   end
 
   def logout(user)
-    user.authentication.regenerate_token
+    # user.authentication.regenerate_token
   end
 
   def connect
